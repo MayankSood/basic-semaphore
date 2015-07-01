@@ -1,4 +1,4 @@
-package com.mayank.thread.funde;
+package com.mayank.thread.chat;
 
 class T1 implements Runnable {
     Chat m;

@@ -1,4 +1,4 @@
-package com.mayank.thread.funde;
+package com.mayank.thread.chat;
 
 public class ThreadTest {
 
