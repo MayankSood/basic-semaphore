@@ -5,11 +5,12 @@ public class Main {
 	public static BasicSemaphore lock = new BasicSemaphore();
 	public static void main(String[] args) {
 		for (int i = 0; i < 10; i++) {
+			final int c = i;
 			Thread t = new Thread(new Runnable() {
 
 				@Override
 				public void run() {
-					runnnn(getRunnable());
+					runnnn(c);
 				}
 			});
 			t.setName("Thread-t" + (i+1));
@@ -19,24 +20,18 @@ public class Main {
 		System.out.println("-------------------------------DONE-------------------------------");
 	}
 
-	private static void runnnn(Runnable runnable) {
+	private static void runnnn(int c) {
 		lock.aquireLock();
-		if (runnable != null) {
-			runnable.run();
+		
+		
+		//Do your meaningfull work
+		try {
+			Thread.sleep((c+1)*(5000));
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
+		
+		
 		lock.releaseLock();
-	}
-
-	private static Runnable getRunnable() {
-		return new Runnable() {
-			public void run() {
-				try {
-					Thread.sleep(0);
-					//System.out.println("Run ----  " + Thread.currentThread().getName());
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		};
 	}
 }
