@@ -26,7 +26,7 @@ public class Main {
 		
 		//Do your meaningfull work
 		try {
-			Thread.sleep((c+1)*(5000));
+			Thread.sleep((c+1)*(2000));
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

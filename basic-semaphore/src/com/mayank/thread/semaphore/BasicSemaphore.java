@@ -10,7 +10,7 @@ public class BasicSemaphore {
 	
 	public void aquireLock() {
 		synchronized (this) {
-			if (getState() == State.CLOSE) {
+			while (getState() == State.CLOSE) {
 				try {
 					wait();
 				} catch (InterruptedException e) {
@@ -19,11 +19,7 @@ public class BasicSemaphore {
 			}
 		}
 		
-		if (getState() == State.CLOSE) {
-			aquireLock();
-		} else {
-			aquiredThreads.incrementAndGet();
-		}
+		aquiredThreads.incrementAndGet();
 		
 		System.out.println(Thread.currentThread().getName()+"-aquire()------"+aquiredThreads.get());
 		
