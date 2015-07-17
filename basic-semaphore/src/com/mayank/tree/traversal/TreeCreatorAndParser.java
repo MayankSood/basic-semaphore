@@ -6,17 +6,9 @@ public class TreeCreatorAndParser {
 		Node rootNode = new Node(1);
 		System.out.println();
 		
-		preorderTraversal(rootNode);
-		
-		System.out.println();
-		System.out.println();
-		
-		postorderTraversal(rootNode);
-		
-		System.out.println();
-		System.out.println();
-		
 		inorderTraversal(rootNode);
+		System.out.println();
+		reverseInorderTraversal(rootNode);
 	}
 	
 	public static void preorderTraversal(Node node) {
@@ -40,9 +32,21 @@ public class TreeCreatorAndParser {
 			if (node.getLeft() != null) {
 				inorderTraversal(node.getLeft());
 			}
-			System.out.println(node.getId());
+			System.out.print(node.getId());
 			if (node.getRight() != null) {
 				inorderTraversal(node.getRight());
+			}
+		}
+	}
+	
+	public static void reverseInorderTraversal(Node node) {
+		if (node != null) {
+			if (node.getRight() != null) {
+				reverseInorderTraversal(node.getRight());
+			}
+			System.out.print(node.getId());
+			if (node.getLeft() != null) {
+				reverseInorderTraversal(node.getLeft());
 			}
 		}
 	}

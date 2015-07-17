@@ -12,7 +12,7 @@ public class BasicSemaphore {
 		synchronized (this) {
 			while (getState() == State.CLOSE) {
 				try {
-					wait();
+					wait(3000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
